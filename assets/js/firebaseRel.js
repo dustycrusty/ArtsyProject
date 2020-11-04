@@ -37,10 +37,10 @@ var handleSignedInUser = function(user) {
         `<div class="d-flex flex-column align-items-xl-end">
                         <a id="profileRef" class="collapsible">Profile</a> 
                         <div id="profileCollapsible" class="collapsible-content" >
-                            <div> <a href="/Market.html">Market</a>
-                            <div> <a href="/manageUpload.html">Manage Uploads</a>
-                            <div> <a href="/uploadForm.html">Upload Work</a> </div>
-                            <div> <a href="/Setting.html">Setting</a></div>
+                            <div> <a href="Market.html">Market</a>
+                            <div> <a href="manageUpload.html">Manage Uploads</a>
+                            <div> <a href="uploadForm.html">Upload Work</a> </div>
+                            <div> <a href="Setting.html">Setting</a></div>
                             <div> <a onclick="signOut()">Logout</a> </div>
                         </div>
                     </div>`
@@ -58,7 +58,7 @@ var handleSignedOutUser = function() {
   // document.getElementById('sign-in').style.display = "block";
   //   document.getElementById('sign-in-nav-button').style.display = "block";
     
-    document.getElementById('nav-right-section').innerHTML ='<a id= "sign-in" href= "/signin.html">Sign In</a>'
+    document.getElementById('nav-right-section').innerHTML ='<a id= "sign-in" href= "signin.html">Sign In</a>'
     
     
     
