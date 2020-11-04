@@ -109,7 +109,8 @@ function signUp() {
     firebase.auth().createUserWithEmailAndPassword(email, pass).then(function(user) {
         user.user.sendEmailVerification()
                 .then(firebase.auth().signOut())
-                .then(function() {                                 window.location.replace('/SignUpComplete.html');
+                .then(function() {                                 
+                  window.location.replace('SignUpComplete.html');
                    })
                 .catch(function(error) {
    var errorCode = error.code;
