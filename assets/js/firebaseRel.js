@@ -86,7 +86,7 @@ function login() {
             
         }
         else {
-            window.location.replace('/index.html');
+            window.location.replace('index.html');
         }
           
             
@@ -137,7 +137,7 @@ function signUp() {
 
 function signOut() {
     firebase.auth().signOut().then(function() {
-        window.location.replace('/index.html');
+        window.location.replace('index.html');
 }).catch(function(error) {
    var errorCode = error.code;
           var errorMessage = error.message;
