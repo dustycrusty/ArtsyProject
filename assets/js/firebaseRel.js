@@ -1,11 +1,20 @@
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  
+
 var db = firebase.firestore();
 var storage = firebase.storage();
 var storageRef = storage.ref();
- 
+var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+
+if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                   // this value to authenticate with your backend server, if
+                   // you have one. Use User.getToken() instead.
+}
 
 var initApp = function() {
   document.getElementById('sign-out').addEventListener('click', function() {
@@ -27,12 +36,13 @@ var initApp = function() {
 };
 
 
-var handleSignedInUser = function(user) {
+var handleSignedInUser = function(signedinuser) {
   // document.getElementById('profileRef').style.display = 'block';
   // document.getElementById('profileCollapsible').style.display = 'block';
   // document.getElementById('sign-in').style.display = "none";
   //   document.getElementById('sign-in-nav-button').style.display = "none";
-    
+    user = signedinuser;
+    getUploadData();
     document.getElementById('nav-right-section').innerHTML = 
         `<div class="d-flex flex-column align-items-xl-end">
                         <a id="profileRef" class="collapsible">Profile</a> 
@@ -40,7 +50,6 @@ var handleSignedInUser = function(user) {
                             <div> <a href="Market.html">Market</a>
                             <div> <a href="manageUpload.html">Manage Uploads</a>
                             <div> <a href="uploadForm.html">Upload Work</a> </div>
-                            <div> <a href="Setting.html">Setting</a></div>
                             <div> <a onclick="signOut()">Logout</a> </div>
                         </div>
                     </div>`
@@ -152,4 +161,3 @@ function signOut() {
 };
 
 window.addEventListener('load', initApp);
-firebase.analytics();

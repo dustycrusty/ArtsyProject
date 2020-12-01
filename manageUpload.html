@@ -7,10 +7,8 @@
     <title>Manage Upload Artsy.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css?h=ce25081991fa6ca202f1c312abc42fab">
-    <link rel="stylesheet" href="assets/css/about.css?h=9a169e174f2ce37b25ef7cfc2492f009">
+    <link rel="stylesheet" href="assets/css/about.css?h=f8abcf5503d786c8ad20b0e7fa9ad2ff">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css?h=9768f97091bf2397d50673f41e6b4c17">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css?h=9654cefe46b5bd42a51107beb1615b98">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia.css">
@@ -18,21 +16,21 @@
     <link rel="stylesheet" href="assets/css/marketOption.css?h=052a67344ebe412ea39370f0f0ad4683">
     <link rel="stylesheet" href="assets/css/marketSearch.css?h=faa6ccca04c4112bd9aea9dda453340c">
     <link rel="stylesheet" href="assets/css/navigation.css?h=d59bb91cd8880d413c4daa64b8241c44">
-    <link rel="stylesheet" href="assets/css/styles.css?h=451a252c2b0c4c67ef2e08f879cef97f">
+    <link rel="stylesheet" href="assets/css/styles.css?h=b20e0dfbd0c20dbecab841c239bd50c6">
     <link rel="stylesheet" href="assets/css/uploadYourWork.css?h=9a08f08a3be5efe240aa81df75d947fb">
 </head>
 
-<body>
+<body><a class="skip-to-content-link" href="#main">skip to content</a>
     <header><nav class= "topnav" id="Navigator">
             <a href="index.html" class="company">Artsy.</a>
             <div>
             
-                <a id="home" href="index.html" class="active" >Home</a>
+                <a id="home" href="index.html" >Home</a>
                     
                 <a href="about.html" >About</a>
                 <a href="contact.html" >Contact</a>
                 <div id= "nav-right-section" class="nav-right">
-<!--                     <a id= "sign-in" href= "/signin.html">Sign In</a>
+<!--                     <a id= "sign-in" href= "signin.html">Sign In</a>
                     <div class="d-flex flex-column align-items-xl-end">
 
                         <a id="profileRef" class="collapsible">Profile</a> 
@@ -53,6 +51,30 @@
                 </a>
    
 </nav></header>
+    <main id="main">
+        <div class="opaque-div">
+            <h1 class="page-title market-sub"><strong>Manage Upload.&nbsp;</strong><br></h1>
+        </div>
+        <div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Uploads</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body-main">
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><script id="cell-template" type="text/html">
+   
+    <td>{{cellContent}}
+        <div class="d-flex justify-content-center align-items-center align-content-center"><button class="btn btn-primary" type="button" onclick="onDeleteItemClick(this)" data-content='{{artsuid}}' data-uid='{{useridsave}}'>Delete</button></div>
+    </td>
+    
+</script></main>
     <div class="footer-dark">
         <footer>
             <div class="container">
@@ -82,19 +104,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/smart-forms.min.js?h=ce25081991fa6ca202f1c312abc42fab"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <script src="assets/js/config.js?h=fc766053621ef38f099531c4a63c39e2"></script>
-    <script src="assets/js/firebaseRel.js?h=3a38393d5e931aef50424e41af0ce8a3"></script>
-    <script src="assets/js/home.js?h=36ea82672c43094e3dd249c1b7e7549d"></script>
-    <script src="assets/js/algoliaSearch.js?h=a4fc898d446f3ba68b2428668e513415"></script>
+    <script src="assets/js/config.js?h=4fdadf6e993441d6a9b3d93168cd9936"></script>
+    <script src="assets/js/firebaseRel.js?h=0e2607ae7d2d26b54693184264ef54d7"></script>
+    <script src="assets/js/home.js?h=c4fe1e525f3ba56f80b82c0bafd8be27"></script>
     <script src="assets/js/validateSignup.js?h=dfeb9d4724bba0ff46e08bc1994505a5"></script>
-    <script src="assets/js/firebaseUserManage.js?h=2651914371497c307edf91c79e9f1f0c"></script>
+    <script src="assets/js/firebaseUserManage.js?h=247814397df64d65e178b7b6f91298bd"></script>
     <script src="assets/js/overlayLoader.js?h=f2a42a9de030b9e67109155e2fee85a1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script src="assets/js/marketPlace.js?h=5f3bdac5fc38d4ffc948f61c687c73e2"></script>
+    <script src="assets/js/manageUpload.js?h=362e7c3919cb25715e99f1ffaacafaf3"></script>
 </body>
 
 </html>

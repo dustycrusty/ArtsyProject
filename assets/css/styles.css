@@ -428,3 +428,16 @@ body {
   color: black;
 }
 
+.skip-to-content-link {
+  background: #e77e23;
+  height: 30px;
+  left: 50%;
+  padding: 8px;
+  position: absolute;
+  top: -30px;
+}
+
+.skip-to-content-link:focus {
+  top: 0px;
+}
+

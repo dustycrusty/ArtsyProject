@@ -1,4 +1,3 @@
-
 function getUserData() {
     var user = firebase.auth().currentUser;
 
@@ -133,10 +132,28 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
             var description = document.getElementById("description").value;
             var expectedPrice = document.getElementById("expectedPrice").value;
             var name = firebase.auth().currentUser.displayName;
-            var uid = firebase.auth().currentUser.uid;
+            var useruid = firebase.auth().currentUser.uid;
             var email = firebase.auth().currentUser.email;
             var pool = email.split("@")[1];
-            console.log(typeof(name), typeof(uid), typeof(email), typeof(pool), typeof(downloadURL))
+            console.log(typeof(name), typeof(uid), typeof(email), typeof(pool), typeof(downloadURL));
+             var userRef = db.collection('users').doc(useruid);
+                console.log(userRef.id);
+            console.log(uid);
+            userRef.update({arts: firebase.firestore.FieldValue.arrayUnion(uid)}).then(function() {
+                console.log("done");
+            }).catch( function(error) {
+               console.log(error.message); 
+                userRef.set({
+                    arts:[uid]
+                }).then(function() {
+                    console.log("add done");
+                }).catch( function(error) {
+                    console.log(error.message);
+                })
+            });
+                                                
+            
+      
             ref.set({
                 title: title,
                 description: description,
@@ -145,9 +162,22 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
                 pool: pool,
                 dimension: dimension,
                 image: downloadURL
-            }).then(function() {
+            })
+                .then(function() {
             alert('success!');
                 closeModal();
+                var elements = document.getElementsByTagName("input");
+                for (var i=0; i < elements.length; i++) {
+                  if (elements[i].type == "text") {
+                    elements[i].value = "";
+                  }
+                }
+                var secondElements = document.getElementsByTagName("textarea");
+                for (var i=0; i < secondElements.length; i++) {
+                  if (secondElements[i].type == "textarea") {
+                    secondElements[i].value = "";
+                  }
+                }
         })
         .catch(function(error) {
             alert(error.message);
@@ -158,4 +188,3 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
   });
 });
 };
-
